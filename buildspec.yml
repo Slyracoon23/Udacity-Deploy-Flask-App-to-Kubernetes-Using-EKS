@@ -33,7 +33,7 @@ phases:
         - pytest test_main.py
   build:
     commands:
-      - docker build --tag $REPOSITORY_URI:$TAG . -f
+      - docker build --tag $REPOSITORY_URI:$TAG . --force-rm
 
   post_build:
     commands:
