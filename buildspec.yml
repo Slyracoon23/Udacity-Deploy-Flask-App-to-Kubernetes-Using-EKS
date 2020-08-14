@@ -33,7 +33,7 @@ phases:
         - pytest test_main.py
   build:
     commands:
-      - docker build --tag $REPOSITORY_URI:$TAG .
+      - docker build --tag $REPOSITORY_URI:$TAG . -f
 
   post_build:
     commands:
@@ -43,3 +43,6 @@ phases:
       - printf '[{"name":"simple_jwt_api","imageUri":"%s"}]' $REPOSITORY_URI:$TAG > build.json
 artifacts:
   files: build.json
+env:
+  parameter-store:
+    JWT_SECRET: JWT_SECRET
